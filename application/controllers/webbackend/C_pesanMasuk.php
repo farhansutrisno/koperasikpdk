@@ -1,4 +1,4 @@
-<?php
+webwebbackend<?php
 class C_pesanMasuk extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
@@ -9,7 +9,7 @@ class C_pesanMasuk extends CI_Controller{
 	
 	public function lihatPesanMasuk(){
 		$data['pesan'] = $this->mod_dataPesanMasuk->lihatPesanMasuk()->result();
-		$this->load->view('backend/V_lihatPesanMasuk',$data);
+		$this->load->view('webbackend/V_lihatPesanMasuk',$data);
 	}
 
 	public function kirimPesan(){
@@ -38,7 +38,7 @@ class C_pesanMasuk extends CI_Controller{
 		                    <p>Pesan berhasil terkirim </p>
 		                </div>');
 				$this->mod_dataPesanMasuk->kirimPesan();
-				redirect('backend/C_pesanMasuk/kirimPesan');
+				redirect('webbackend/C_pesanMasuk/kirimPesan');
 
 		    }
 		}
@@ -59,7 +59,7 @@ class C_pesanMasuk extends CI_Controller{
 		                    <p>Pesan berhasil terkirim </p>
 		                </div>');
 			$this->mod_dataPesanMasuk->kirimPesan();
-			redirect('backend/C_pesanMasuk/kirimPesanLogin');
+			redirect('webbackend/C_pesanMasuk/kirimPesanLogin');
 		}else{
 			$this->session->set_flashdata('pesan3', 
 		                '<div class="alert alert-danger">    
@@ -68,7 +68,7 @@ class C_pesanMasuk extends CI_Controller{
 		                    <p>Harap memasukan data dengan lengkap<br/>
 		                    Terima kasih.</p>
 		                </div>');
-			redirect('backend/C_pesanMasuk/kirimPesanLogin');
+			redirect('webbackend/C_pesanMasuk/kirimPesanLogin');
 		}
 	}*/
 
@@ -80,12 +80,12 @@ class C_pesanMasuk extends CI_Controller{
 		                    <p>Berhasil menghapus data pesan masuk</p>
 		                </div>');
 		$this->mod_dataPesanMasuk->deletePesanMasuk($kdPesanMasuk);
-		redirect('backend/C_pesanMasuk/lihatPesanMasuk');
+		redirect('webbackend/C_pesanMasuk/lihatPesanMasuk');
 	}
 	
 	public function detailPesanMasuk($kdPesanMasuk){
 		$data["row"] = $this->mod_dataPesanMasuk->detailPesanMasuk($kdPesanMasuk)->result();
-		$this->load->view('backend/V_detailPesanMasuk', $data);
+		$this->load->view('webbackend/V_detailPesanMasuk', $data);
 	}
 
 

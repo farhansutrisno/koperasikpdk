@@ -12,11 +12,11 @@ class C_dataProduk extends CI_Controller{
 		$data['tahun']	= $this->mod_dataProduk->tahun2()->result();
 		$data['bulan']	= $this->mod_dataProduk->bulan()->result();
 		$data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
-		$this->load->view('backend/V_lihatDataProduk',$data);
+		$this->load->view('webbackend/V_lihatDataProduk',$data);
 	}
 
 	public  function inputDataProduk(){
-		$this->load->view('backend/V_inputDataProduk');
+		$this->load->view('webbackend/V_inputDataProduk');
 	}
 
 	public function prosesInputDataProduk(){
@@ -35,7 +35,7 @@ class C_dataProduk extends CI_Controller{
 	    if(isset($_POST['submit'])){
 		    if($this->form_validation->run() == false){
 
-		        $this->load->view('backend/V_inputDataProduk');
+		        $this->load->view('webbackend/V_inputDataProduk');
 
 		    }
 		    else{
@@ -100,7 +100,7 @@ class C_dataProduk extends CI_Controller{
 	                "kdOperator"            => $kode);
 				
 				$this->mod_dataProduk->inputDataProduk($data);
-				redirect('backend/C_dataProduk/lihatDataProduk');
+				redirect('webbackend/C_dataProduk/lihatDataProduk');
 
 		    }
 		}
@@ -120,7 +120,7 @@ class C_dataProduk extends CI_Controller{
 
 	public function updateDataProduk($kdProduk){
 		$data["produk"] = $this->mod_dataProduk->updateDataProduk($kdProduk)->result();
-		$this->load->view('backend/V_updateDataProduk', $data);
+		$this->load->view('webbackend/V_updateDataProduk', $data);
 	}
 
 	public function prosesUpdateDataProduk(){
@@ -142,7 +142,7 @@ class C_dataProduk extends CI_Controller{
 
 		    	$kdProduk 		= $this->input->post('kdProduk');
 		        $data["produk"] = $this->mod_dataProduk->updateDataProduk($kdProduk)->result();
-				$this->load->view('backend/V_updateDataProduk', $data);
+				$this->load->view('webbackend/V_updateDataProduk', $data);
 
 		    }
 		    else{
@@ -268,7 +268,7 @@ class C_dataProduk extends CI_Controller{
 			                    <p>Berhasil mengupdate data produk</p>
 			                </div>');
 				
-				redirect('backend/C_dataProduk/lihatDataProduk');
+				redirect('webbackend/C_dataProduk/lihatDataProduk');
 		    }
 		}
 		
@@ -282,12 +282,12 @@ class C_dataProduk extends CI_Controller{
 		                    <p>Berhasil menghapus data produk</p>
 		                </div>');
 		$this->mod_dataProduk->deleteDataProduk($kdProduk);
-		redirect('backend/C_dataProduk/lihatDataProduk');
+		redirect('webbackend/C_dataProduk/lihatDataProduk');
 	}
 
 	public function detailProduk($kdProduk){
 		$data["row"] = $this->mod_dataProduk->detailProduk($kdProduk)->result();
-		$this->load->view('backend/V_detailDataProduk', $data);
+		$this->load->view('webbackend/V_detailDataProduk', $data);
 	}
 
 	function grafikProduk(){
@@ -336,7 +336,7 @@ class C_dataProduk extends CI_Controller{
 		$x['sudah_dikirim'] 	= $this->mod_dataProduk->seluruhnya('sudah dikirim')->row()->data;
 		$x['sudah_diterima'] 	= $this->mod_dataProduk->seluruhnya('sudah diterima')->row()->data;
 
-		$this->load->view('backend/V_lihatGrafikPenjualan',$x);
+		$this->load->view('webbackend/V_lihatGrafikPenjualan',$x);
 
       	/*$x['makanan'] 			= $makanan;
 		$x['minuman'] 			= $minuman;
@@ -393,7 +393,7 @@ class C_dataProduk extends CI_Controller{
 
     public function exportAll(){
 		$data['produk'] = $this->mod_dataProduk->lihatDataProduk()->result();
-		$this->load->view('backend/V_excelDataProduk',$data);
+		$this->load->view('webbackend/V_excelDataProduk',$data);
 	}
 
 	public function dataFilter(){
@@ -402,7 +402,7 @@ class C_dataProduk extends CI_Controller{
             $tahun 		= $this->input->post('tahun');
             $bulan 		= $this->input->post('bulan');
             $data['produk']= $this->mod_dataProduk->excelFilter($kategori,$tahun,$bulan)->result();
-            $this->load->view('backend/V_excelDataProduk',$data);
+            $this->load->view('webbackend/V_excelDataProduk',$data);
         }
     }
 

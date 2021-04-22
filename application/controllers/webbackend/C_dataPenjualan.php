@@ -12,17 +12,17 @@ class C_dataPenjualan extends CI_Controller{
 		$data['tahun']	= $this->mod_dataPenjualan->tahun2()->result();
 		$data['bulan']	= $this->mod_dataPenjualan->bulan()->result();
 		$data['penjualan'] = $this->mod_dataPenjualan->lihatDataPenjualan()->result();
-		$this->load->view('backend/V_lihatDataPenjualan',$data);
+		$this->load->view('webbackend/V_lihatDataPenjualan',$data);
 	}
 
 	public function detailDataPenjualan2($kdPembayaran){
 		$data["row"] = $this->mod_dataPenjualan->detailDataPenjualan2($kdPembayaran)->result();
-		$this->load->view('backend/V_detailDataPenjualan', $data);
+		$this->load->view('webbackend/V_detailDataPenjualan', $data);
 	}
 
 	public function updateDataPenjualan($kdPembayaran){
 		$data["penjualan"] = $this->mod_dataPenjualan->updateDataPenjualan($kdPembayaran)->result();
-		$this->load->view('backend/V_updateDataPenjualan', $data);
+		$this->load->view('webbackend/V_updateDataPenjualan', $data);
 	}
 
 	public function prosesUpdateDataPenjualan(){
@@ -34,7 +34,7 @@ class C_dataPenjualan extends CI_Controller{
 
 		    	$kdPembayaran		= $this->input->post('kdPembayaran');
 		        $data["penjualan"] 	= $this->mod_dataPenjualan->updateDataPenjualan($kdPembayaran)->result();
-				$this->load->view('backend/V_updateDataPenjualan', $data);
+				$this->load->view('webbackend/V_updateDataPenjualan', $data);
 
 		    }
 		    else{
@@ -46,7 +46,7 @@ class C_dataPenjualan extends CI_Controller{
 			                    <p>Data penjualan berhasil diupdate</p>
 			                </div>');
 				$this->mod_dataPenjualan->prosesUpdateDataPenjualan();
-				redirect('backend/C_dataPenjualan/lihatDataPenjualan');
+				redirect('webbackend/C_dataPenjualan/lihatDataPenjualan');
 
 		    }
 		}
@@ -62,7 +62,7 @@ class C_dataPenjualan extends CI_Controller{
 
 		    	$kdPembayaran		= $this->input->post('kdPembayaran');
 		        $data["penjualan"] 	= $this->mod_dataPenjualan->updateDataPenjualan($kdPembayaran)->result();
-				$this->load->view('backend/V_updateDataPenjualan', $data);
+				$this->load->view('webbackend/V_updateDataPenjualan', $data);
 
 		    }
 		    else{
@@ -74,7 +74,7 @@ class C_dataPenjualan extends CI_Controller{
 			                    <p>Data penjualan berhasil diupdate</p>
 			                </div>');
 				$this->mod_dataPenjualan->prosesUpdateDataPenjualan2();
-				redirect('backend/C_dataPenjualan/lihatDataPenjualan');
+				redirect('webbackend/C_dataPenjualan/lihatDataPenjualan');
 
 		    }
 		}
@@ -83,7 +83,7 @@ class C_dataPenjualan extends CI_Controller{
 
 	public function exportAll(){
 		$data['penjualan'] = $this->mod_dataPenjualan->lihatDataPenjualan2()->result();
-		$this->load->view('backend/V_excelDataPenjualan',$data);
+		$this->load->view('webbackend/V_excelDataPenjualan',$data);
 	}
 
 	public function dataFilter(){
@@ -92,7 +92,7 @@ class C_dataPenjualan extends CI_Controller{
             $tahun 		= $this->input->post('tahun');
             $bulan 		= $this->input->post('bulan');
             $data['penjualan']= $this->mod_dataPenjualan->excelFilter($status,$tahun,$bulan)->result();
-            $this->load->view('backend/V_excelDataPenjualan',$data);
+            $this->load->view('webbackend/V_excelDataPenjualan',$data);
         }
     }
 }
